@@ -1,0 +1,155 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.6.16",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Floor_Modular"
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "Grey_Floor",
+            "normalTexture" : {
+                "index" : 0
+            },
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 1
+                },
+                "metallicRoughnessTexture" : {
+                    "index" : 2
+                }
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cube.031",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "textures" : [
+        {
+            "sampler" : 0,
+            "source" : 0
+        },
+        {
+            "sampler" : 0,
+            "source" : 1
+        },
+        {
+            "sampler" : 0,
+            "source" : 2
+        }
+    ],
+    "images" : [
+        {
+            "mimeType" : "image/jpeg",
+            "name" : "seamless_white_marble_texture_NORMAL",
+            "uri" : "textures/seamless_white_marble_texture_NORMAL.jpg"
+        },
+        {
+            "mimeType" : "image/jpeg",
+            "name" : "seamless_white_marble_texture",
+            "uri" : "textures/seamless_white_marble_texture.jpg"
+        },
+        {
+            "mimeType" : "image/png",
+            "name" : "zero-seamless_white_marble_texture_SPECULAR_INVERTED",
+            "uri" : "textures/zero-seamless_white_marble_texture_SPECULAR_INVERTED.png"
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 1093,
+            "max" : [
+                1.0116928815841675,
+                0.1251637488603592,
+                1.0067870616912842
+            ],
+            "min" : [
+                -1.004992961883545,
+                -0.11440405994653702,
+                -1.0016554594039917
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 1093,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 1093,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 1695,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 13116,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 13116,
+            "byteOffset" : 13116
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 8744,
+            "byteOffset" : 26232
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 3390,
+            "byteOffset" : 34976
+        }
+    ],
+    "samplers" : [
+        {
+            "magFilter" : 9729,
+            "minFilter" : 9987
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 38368,
+            "uri" : "Floor_Modular.bin"
+        }
+    ]
+}

@@ -1,0 +1,105 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.6.16",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Arch_bars"
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "Iron",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.060717418789863586,
+                    0.02924380637705326,
+                    0.02442816272377968,
+                    1
+                ],
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cube.048",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1
+                    },
+                    "indices" : 2,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 2297,
+            "max" : [
+                1.2405091524124146,
+                3.3629651069641113,
+                0.01516520231962204
+            ],
+            "min" : [
+                -1.237746000289917,
+                -0.02518153190612793,
+                -0.015165128745138645
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 2297,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5123,
+            "count" : 4809,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 27564,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 27564,
+            "byteOffset" : 27564
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 9618,
+            "byteOffset" : 55128
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 64748,
+            "uri" : "Bars.bin"
+        }
+    ]
+}

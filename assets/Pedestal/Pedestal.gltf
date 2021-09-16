@@ -1,0 +1,155 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.6.16",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Pedestal"
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "Marble",
+            "normalTexture" : {
+                "index" : 0
+            },
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 1
+                },
+                "metallicRoughnessTexture" : {
+                    "index" : 2
+                }
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cylinder.014",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "textures" : [
+        {
+            "sampler" : 0,
+            "source" : 0
+        },
+        {
+            "sampler" : 0,
+            "source" : 1
+        },
+        {
+            "sampler" : 0,
+            "source" : 2
+        }
+    ],
+    "images" : [
+        {
+            "mimeType" : "image/jpeg",
+            "name" : "Seamless_cream_marble_texture_NORMAL",
+            "uri" : "textures/Seamless_cream_marble_texture_NORMAL.jpg"
+        },
+        {
+            "mimeType" : "image/jpeg",
+            "name" : "Seamless_cream_marble_texture",
+            "uri" : "textures/Seamless_cream_marble_texture.jpg"
+        },
+        {
+            "mimeType" : "image/png",
+            "name" : "zero-Seamless_cream_marble_texture_SPECULAR_INVERTED",
+            "uri" : "textures/zero-Seamless_cream_marble_texture_SPECULAR_INVERTED.png"
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 3554,
+            "max" : [
+                0.97346031665802,
+                2.1929588317871094,
+                0.9797367453575134
+            ],
+            "min" : [
+                -0.9734914302825928,
+                -0.00018127745715901256,
+                -0.979717493057251
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 3554,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 3554,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 5532,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 42648,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 42648,
+            "byteOffset" : 42648
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 28432,
+            "byteOffset" : 85296
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 11064,
+            "byteOffset" : 113728
+        }
+    ],
+    "samplers" : [
+        {
+            "magFilter" : 9729,
+            "minFilter" : 9987
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 124792,
+            "uri" : "Pedestal.bin"
+        }
+    ]
+}
