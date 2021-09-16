@@ -1,5 +1,7 @@
 # Masks of Babylon
 
+![Game Logo](assets/logo-purple.svg)
+
 Final project for the Interactive Graphics course held by Prof. Marco Schaerf.
 
 A simplified turn-based RPG with animations, light effects, and a dungeon to explore.
