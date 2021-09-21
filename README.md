@@ -10,6 +10,10 @@ A simplified turn-based RPG with animations, light effects, and a dungeon to exp
 
 Check out the [GitHub Page](https://sapienzainteractivegraphicscourse.github.io/final-project-masks-of-babylon/)!
 
+## Project report
+
+See the [report.pdf](https://github.com/SapienzaInteractiveGraphicsCourse/final-project-masks-of-babylon/blob/main/report.pdf) file.
+
 ## Libraries used
 
 - [Babylon.js](https://www.babylonjs.com/)
