@@ -1,0 +1,54 @@
+%!TEX root = main.tex
+
+{
+\let\clearpage\relax
+
+\chapter{Other notable features}
+}
+
+\section{SceneManager}
+Because the dungeon is split up into several scenes in order to lighten the burden on the rendering engine, and the battles happen in separate scenes than the dungeon, it is important that we can switch scenes and unload the previous one easily and often.
+
+To that end we developed a so-called \texttt{SceneManager}, a singleton object with the role of holding the active scene object, rendering that scene, and handling requests to switch scenes by loading the new one and unloading the old one.
+
+In order to go to a new non-dungeon scene, the \texttt{SceneManager} requires as argument an object that contains an asynchronous function to load that scene. We call such an object "Scene Builder", and that is what is exported by each JS file that defines a scene. Then the \texttt{SceneManager} disposes the current scene and starts loading the new one.
+
+Transitioning to dungeon scenes is a little more complex, as it requires not only the destination scene builder but also the specific position and orientation the camera should be placed in, since some rooms have multiple entrance points. Apart from the different argument requirement, the process of disposing and loading the scenes is the same as non-dungeon scenes.
+
+In the interim between when the old scene is disposed and when the new scene is ready, no scene is active, so the manager is instructed to not attempt to render anything. Instead, it displays a simple loading screen decorated with the logo of the game, a spinner, and a simple text informing the player of the loading in progress.
+
+Finally, the \texttt{SceneManager} also offers a method to reload the current battle scene, essentially restarting the corresponding fight. This feature is used directly in the game over screen, and is implemented simply by saving the scene builder of the current scene so that it can be used later to reload it from scratch.
+
+
+\section{Game state}
+The \textit{game state} has a fundamental role in this project, it allows to maintain all the information about the state of the game the player is involved in. Indeed, it allows to move between different parts of the dungeon or in the battle scene without losing any information about what has been done in precedence. This is possible because we are using a global singleton object, that stores a persistent state for information
+that needs to be constantly updated after each relevant action.
+The information saved in the \textit{game state} are: 
+\vspace{-10pt}
+\begin{itemize}
+\item which enemies have been defeated and should not appear again;
+\item which object is carried by the player, if any;
+\item the dungeon scene the player was in, as well as its position and orientation within it, when a fight starts;
+\item which keys have been taken from their original spot and should not respawn; and which keys have been already used to unlock a gate, meaning that gate will never appear again;
+\item whether the spike trap has never been triggered, has been activated once, or has been disabled permanently;
+\item whether the story introduction screen has already been displayed in this playthrough.
+\end{itemize}
+
+
+
+\section{Battle turns}
+The flow of battle is regulated by an object called \texttt{TurnSystem}. 
+
+During each turn, both characters involved in the battle has the ability to notify the \texttt{TurnSystem} when they have terminated their animation for the turn: the active character will usually be executing an attack, while the other will have to flinch when they take the hit.
+
+The \texttt{TurnSystem} object keeps track of who finished their own animation, and advances the battle to the next turn as soon as both characters are done, then resets its state and prepares to listen for the following turn.
+
+In case the user selects a non-damaging action, i.e. Charge or Prayer, the player character immediately sends a notification to the \texttt{TurnSystem} on behalf of the enemy, since it will execute no animations in response to such a move.
+
+
+
+\section{Battle UI hit markers}
+During battle, the information related to the HP is shown in a more efficient and intuitive way thanks to the animations developed for the user interface. In fact, after each action that has consequences on the protagonist's or the enemy's HP, there is an animation that starts from the affected character and shows in a coloured square the HP that have been lost or gained during the turn.
+
+Likewise, when the player character executes the Charge action, a similar square will appear to notify the user that they have been charged up and to point their attention to the charge state icon.
+

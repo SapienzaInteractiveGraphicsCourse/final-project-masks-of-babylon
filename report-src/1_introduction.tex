@@ -1,0 +1,47 @@
+%!TEX root = main.tex
+
+\chapter{Introduction}
+
+\textbf{\textit{Masks of Babylon}} is a project inspired by classic turn-based role-playing videogames (RPG) which lets the user play a simplified game of this genre. The player can explore a labyrinth, find items, and fight enemies.
+
+\section{Libraries used}
+
+The project is built entirely with \textbf{BabylonJS}, an open-source library and rendering engine running on top of WebGL. It offers a variety of features, including:
+
+\begin{itemize}
+    \item Rendering a scene with a variety of materials
+    \item Support for different kinds of textures, including color, normal, specular, metallic-roughness, and emission
+    \item Organizing a scene hierarchically
+    \item Loading external models in the glTF format and the associated textures
+    \item Animation of simple and complex objects, with support for keyframes and easing functions, as well as bones for complex objects
+    \item User interaction through keyboard/mouse controls, mesh picking, and GUI (through the additional Babylon GUI module)
+    \item Lighting and shadows
+    \item Mesh instancing and cloning
+\end{itemize}
+
+We also use \texttt{pep.js} to get a uniform framework for pointer events across all platforms.
+
+No other external libraries were used: in particular, our project has no need for a physics engine since it does not aim to simulate it, nor does it need extra animation libraries such as \texttt{tween.js} since Babylon covers that range of features on its own.
+
+\section{Other tools used}
+
+\begin{itemize}
+    \item \textbf{Blender:} 3D model editor which we used to make a few simple new models, adapt some of the models found online to the needs of our project, and prototype the animation keyframes for the complex models before writing them out in the code.
+    \item \textbf{GIMP/Photoshop:} advanced image editors which we used to prepare some textures found online for use in our project and to combine some of those textures into new ones to reduce the number of materials of certain objects.
+    \item \textbf{Inkscape:} SVG editor used to adapt some SVG icons found online to our project, including coloring them, and to create single SVG files holding multiple such icons.
+    \item \textbf{Babylon Sandbox:} tool developed by the BabylonJS community which we used to preview how Babylon would process the objects contained in some glTF files.
+    \item \textbf{Overleaf:} online LaTeX editor, used to make this document.
+\end{itemize}
+
+\section{Browser compatibilty}
+
+The project has been tested on the following browsers:
+
+\begin{itemize}
+    \item Google Chrome
+    \item Mozilla Firefox
+    \item Opera
+    \item Microsoft Edge
+\end{itemize}
+
+No particular problem has been encountered while testing the game on any of these platforms.

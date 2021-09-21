@@ -1,0 +1,159 @@
+\documentclass[a4paper]{report}
+\usepackage[a4paper, left=1.3in, right=1.3in, top=1in, bottom=1in]{geometry}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{cite}
+\usepackage{svg}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\usepackage{indentfirst}
+\usepackage{tensor}
+\usepackage{amssymb}
+\allowdisplaybreaks
+\usepackage{bm}
+\newcommand{\at}[2][]{#1|_{#2}}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\usepackage{caption}
+\captionsetup[lstlisting]{font={small}}
+\captionsetup[figure]{font=small, labelfont={it}, textfont={it}}
+\captionsetup[table]{font=small, labelfont={it}, textfont={it}}
+\usepackage{breqn}
+\usepackage{verbatim}
+\usepackage{wasysym}
+\usepackage{wrapfig}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DA QUI IN GUI RIGUARDA IL COLORE DEL CODICE CHE RIPORTIAMO, SE NON INTERESSA SI CANCELLA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+\usepackage{color}
+\definecolor{lightgray}{rgb}{0.98,0.98,0.98}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{orange}{rgb}{0.9, 0.1, 0}
+\definecolor{green}{rgb}{0.2, 0.8, 0}
+
+
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, for, let},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{green}\ttfamily,
+  stringstyle=\color{orange}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstset{
+   language=JavaScript,
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}             
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{makecell}
+\usepackage{hyperref}  % importare per ultimo https://www.overleaf.com/learn/latex/Hyperlinks
+\definecolor{dkgrey}{rgb}{0.2, 0.2, 0.2}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=dkgrey,
+    urlcolor=cyan,
+		pdftitle={IG Report: "Masks of Babylon"},
+}
+\graphicspath{ {./images} }
+% collegamento ipertestuale che scrive anche nome e numero del capitolo/sezione.
+% Source: https://tex.stackexchange.com/questions/121865/nameref-how-to-display-section-name-and-its-number
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{\autoref*{#1}: \nameref*{#1}}}
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+%\title{Masks of Babylon}
+\makeatletter
+%\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\begin{titlepage}
+	\centering
+    \vspace*{0.5 cm}
+    \includegraphics{images/sapienza-MLred-pos}\\[1.0 cm]	% University Logo
+    \vspace*{-0.5cm}
+    \textsc{\large Facoltà di \\Ingegneria dell'Informazione, Informatica e Statistica}\\[0.5 cm]	% Department Name
+    \textsc{\large Dipartimento \\di Ingegneria Informatica, Automatica e Gestionale}\\[0.5 cm]	% Department Name
+    \textbf{\large Interactive Graphics}\\[0.1 cm]
+    \textbf{\large Final project}\\[2.0 cm]
+    \textsc{\large A.Y. 2020/21}\\[2.0 cm]
+    { \fontsize{20.74pt}{18.5pt}\selectfont\bfseries \par } % \thetitle
+    % \vspace*{5.6cm}
+    \begin{figure}[htbp]
+    \centering
+    \includesvg{images/Masks_of_Babylon_1_purple.svg}
+    \end{figure}
+    \vspace*{3cm}
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushleft} \large
+			\emph{Professor:}\\
+			Marco Schaerf\\
+		\end{flushleft}
+	\end{minipage}~
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright} \large
+			\emph{Students (alphabetical order):} \\
+            Giovanni Pecorelli 1799865\\
+            Francesco Petri 1797147\\
+            Jacopo Rossi 1801667\\
+            Giacomo Venneri 1810169
+		\end{flushright}
+	\end{minipage}\\[2 cm]
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\setlength{\parskip}{1em}
+
+\input{1_introduction}
+
+\input{2_manual}
+
+\input{3_models}
+
+\input{4_environment}
+
+\input{5_animations}
+
+\input{6_lighting}
+
+\input{7_notable_features}
+
+\input{credits}
+
+
+\end{document}

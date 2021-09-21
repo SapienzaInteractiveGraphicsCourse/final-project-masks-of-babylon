@@ -1,0 +1,54 @@
+%!TEX root = main.tex
+
+\chapter{Lighting and Shadows}
+
+\textit{Masks of Babylon} uses two broad types of lighting: environmental lighting, which is always present in dungeons and battles, and the lights emitted by the special attacks, which we use to create visual effects to accompany those actions.
+
+\section{Environmental lighting}
+
+The general lighting of the scenes is given by two basic light sources:
+
+\begin{itemize}
+    \item An \texttt{HemisphericLight} serves as a true ambient light and makes sure that every corner and object in the dungeon is decently lit for the user's benefit;
+    \item A \texttt{DirectionalLight} is added in order to cast shadows, since the other one, as an ambient light, cannot.
+\end{itemize}
+
+The default intensity of these lights is slightly less that full power in order to be as coherent with the dark sky map as possible without making the environment too dark for the user. The intensity of the two lights is kept in sync at all times, so that we can animate them both by actively controlling only one.
+
+Furthermore, the direction of these lights is slightly oblique, because a purely vertical direction would result in a worse lighting for some objects (especially the pedestal in the ending) and in trivially short shadows.
+
+\section{Special attack lighting}
+
+The light effects of the special actions make use of the other types of light source available in BabylonJS:
+
+\begin{itemize}
+    \item \textit{Fireball} uses a \texttt{PointLight} to represent the light emitted by the eponymous projectile. That is further represented by the emissive texture of the fireball's material.
+    \item \textit{Prayer} uses two light sources to represent its healing light: an \texttt{HemisphericLight} that is set to affect only Makoto to fully envelop him in it, and a \texttt{PointLight} to illuminate the surrounding floor.
+    \item \textit{Luna} uses a \texttt{PointLight} and an emissive material like \textit{Fireball}, and it also uses an \texttt{HemisphericLight} set to affect only Makoto to light him better in the moment he is hit.
+    \item \textit{Laser} uses a \texttt{SpotLight} to represent the light emitted by the laser beam. Like the other offensive special actions, it also uses an emissive material for the beam mesh itself.
+\end{itemize}
+
+From a technical point of view, only one light per type was created for this kind of lighting: so all special actions share the same point light, the same spotlight and the same hemispherical light,\footnote{To clarify, the \texttt{HemisphericLight} of the special attacks is NOT the same object as the environmental one.} in order to spare some resources. Since no more than one of these moves is active at any given time, each of them takes possession of the lights it needs and sets their parameters as it begins.
+
+The lights of the special attacks are set up to cast the shadows of nearby objects, notably the two combatants. This, combined with the fact that the environmental light gets dimmed to almost nothing for the whole duration of each special action, allows these moves to produce suggestive and emphasized lighting effects which enhance the graphical impact of the project.\\
+The light of \textit{Prayer} casts no shadows because its light is supposed to be emitted by Makoto himself and is too weak to reach other objects, but the action still dims the environmental light for emphasis, as above.
+
+\section{Shadows}
+
+For the three lights that create shadows (the environmental \texttt{DirectionalLight} and the \texttt{Point} \texttt{Light} and \texttt{SpotLight} for the special attacks), the shadow casting is implemented by creating a \texttt{ShadowGenerator} object for each of those lights. This object holds the shadow map for the corresponding light source, whose resolution can be decided with a parameter, and it also offers the possibility to use some smoothing filters to increase the quality of the shadows. The \texttt{ShadowGenerator} then registers which objects in the scene should produce a shadow because of the associated light via the \texttt{addShadowCaster} method; and finally each object that should display the shadows does so by setting its own \texttt{receiveShadows} property.
+
+Directional and spot lights cast shadows via simple projections, while point lights have to use a cube map, which is more expensive with respect to performance but allows them to cast shadows in all directions.\\
+Because the battle scenes have few objects that should produce a shadow and the special attack lights are only active for a few seconds, we observed that using point lights with shadows have little impact on performance, which is why we used them where we needed and offered the possibility to reduce the quality level of the shadows.
+
+We set most non-floor, non-wall objects as shadow casters and all floors and walls as shadow receivers. We decided against having walls cast shadows in order to let the floor have a better lighting, although this results in the shadow of some wall-mounted objects "floating" on the floor.\\
+As an exception, the pedestal in the ending is both a shadow caster and a shadow receiver because it strongly needs to both cast its own shadow and receive the Cube of Babylon's.
+
+The quality of the shadows is affected by the resolution of the shadow map and the type of smoothing filter used, if any. Specifically, the "Shadows" options found in the main menu correspond to the following combinations:
+
+\begin{itemize}
+    \item \textbf{Low Quality:} resolution 1024 and no filter. This results in blocky but efficient shadows, ideal for weaker GPUs. We decided against using a filter because the low resolution made the blurred borders look no better than the blocky ones.
+
+    The only exception to this decision is the ending scene, where the shadow casters are few and close to each other, therefore the shadows are less blocky even at low resolution. Furthermore, the pedestal in that scene is both a shadow caster and a receiver, so a self-shadowing phenomenon is present. This scene uses a \textit{blurred close exponential shadow map} filter, which is the best for handling self-shadows.
+    
+    \item \textbf{High quality:} resolution 4096 and a smoothing filter depending on the scene: dungeons use \textit{percentage closer filtering}, battles use a \textit{blurred close exponential shadow map} like the ending. This dual filtering choice was made because the two types of scene have different needs, and each looked best with a different type of filter.
+\end{itemize}
