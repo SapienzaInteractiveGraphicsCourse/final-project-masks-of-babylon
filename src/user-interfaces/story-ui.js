@@ -26,7 +26,7 @@ function createUI(scene) {
     const text_story = new BABYLON.GUI.TextBlock("text_story");
     text_story.text = theStoryText;
     text_story.top = "-40px";
-    text_story.fontSize = 30;
+    text_story.fontSize = 27;
     rect_bg.addControl(text_story);
 
     // add button to retry

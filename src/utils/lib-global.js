@@ -33,31 +33,33 @@ function createDirectionalLight(scene, shadowcasters=[], sceneType=SCENETYPE.DUN
     // ...and a dimmer diffuse color, so we can darken the dungeon a bit further w/o dimming specular reflections too much
     light.diffuse = new BABYLON.Color3(0.8, 0.8, 0.8);
 
-    let resolution;
-        switch (theOptions.shadows) {
-            case 2:
-                resolution = 4096;
-                break;
-            case 1:
-            default:
-                resolution = 1024;
+    if (theOptions.shadows != 0) {
+        let resolution;
+            switch (theOptions.shadows) {
+                case 2:
+                    resolution = 4096;
+                    break;
+                case 1:
+                default:
+                    resolution = 1024;
+            }
+        const shadowgen = new BABYLON.ShadowGenerator(resolution, light);
+        shadowcasters.forEach(element => {
+            shadowgen.addShadowCaster(element, true);
+        });
+        if (sceneType == SCENETYPE.ENDING) {
+            shadowgen.useBlurCloseExponentialShadowMap = true;
         }
-    const shadowgen = new BABYLON.ShadowGenerator(resolution, light);
-    shadowcasters.forEach(element => {
-        shadowgen.addShadowCaster(element, true);
-    });
-    if (sceneType == SCENETYPE.ENDING) {
-        shadowgen.useBlurCloseExponentialShadowMap = true;
+        else if (theOptions.shadows == 2 && sceneType == SCENETYPE.BATTLE) {
+            shadowgen.useBlurCloseExponentialShadowMap = true;
+        }
+        else if (theOptions.shadows == 2 && sceneType == SCENETYPE.DUNGEON) {
+            shadowgen.usePercentageCloserFiltering = true;
+        }
+    
+        light.shadowMinZ = -9;
+        light.shadowMaxZ = 6;
     }
-    else if (theOptions.shadows == 2 && sceneType == SCENETYPE.BATTLE) {
-        shadowgen.useBlurCloseExponentialShadowMap = true;
-    }
-    else if (theOptions.shadows == 2 && sceneType == SCENETYPE.DUNGEON) {
-        shadowgen.usePercentageCloserFiltering = true;
-    }
-
-    light.shadowMinZ = -9;
-    light.shadowMaxZ = 6;
 
     // return the light for future use
     return light;
